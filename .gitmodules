@@ -1,0 +1,3 @@
+[submodule "bundle/preview"]
+	path = bundle/preview
+	url = git://github.com/greyblake/vim-preview.git
