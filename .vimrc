@@ -17,8 +17,7 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
   set t_Co=256
 endif
-color desert
-"color molokai
+color molokai
 
 "格式设置
 set autoindent
@@ -92,6 +91,9 @@ let g:neocomplcache_disable_auto_complete=1
 "NERD Tree config
 let g:NERDTreeShowBookmark=1
 
+" activate pathogen
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
 " autoload _vimrc
 autocmd! bufwritepost _vimrc source %
 
