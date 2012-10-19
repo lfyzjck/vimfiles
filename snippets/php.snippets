@@ -4,6 +4,12 @@ snippet php
 	?>
 snippet p
 	<?php ${1} ?>
+snippet ti
+	$this->${1}
+snippet vd
+	var_dump($${1});die();
+snippet pd
+	print_r($${1});die();
 snippet ec
 	echo "${1:string}"${2};
 snippet inc
@@ -14,8 +20,6 @@ snippet req
 	require '${1:file}';${2}
 snippet req1
 	require_once '${1:file}';${2}
-snippet ti
-	$this->${1}
 # $GLOBALS['...']
 snippet globals
 	$GLOBALS['${1:variable}']${2: = }${3:something}${4:;}${5}
@@ -218,16 +222,3 @@ snippet fun
 # $... = array (...)
 snippet array
 	$${1:arrayName} = array('${2}' => ${3});${4}
-snippet du
-	var_dump(${1:$var});
-snippet y_dump
-	CVarDumper::dump(${1:$var},${2:10},true);
-snippet y_action
-	$form = new ${1:FormName};
-	if(isset($_POST['$1'])){
-		$form->attributes = $_POST['$1'];
-		if($form->validate()){
-			${3}
-		}
-	}
-	$this->render('${2:viewname}',array('model'=>$form));

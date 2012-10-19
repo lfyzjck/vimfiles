@@ -11,12 +11,17 @@ set history=1000
 " colors 
 "---------------------------------------------------------------------------
 set background=dark " use a dark background 
+syntax on
 " let g:molokai_original = 1
 if &t_Co > 2 || has("gui_running")
-  syntax on
-  set hlsearch
-  set t_Co=256
+    set guioptions-=T
+    set guioptions+=e
+    set t_Co=256
+    set guitablabel=%M\ %t
 endif
+set cursorline      " 高亮当前行
+set showcmd
+"color desert
 color molokai
 
 "格式设置
@@ -25,10 +30,14 @@ set smartindent
 
 set tabstop=4
 set shiftwidth=4
+set expandtab
 set showmatch
 
 "设置文件浏览器目录为当前目录
 set autochdir
+
+" 光标移动到buffer的顶部和底部时，保持3行距离
+set scrolloff=3
 
 set nobackup
 "搜索忽略大小写
@@ -40,12 +49,16 @@ set incsearch
 
 "编码设置
 set enc=utf-8
-set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
-set guifont=Inconsolata\ 12
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+set guifont=Inconsolata:h12:cANSI
 
 "语言设置
 set langmenu=zh_CN.UTF-8
 set helplang=cn
+" 设置文件格式
+set ffs=unix,dos ff=unix
+
+"解决菜单乱码
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 
@@ -66,24 +79,37 @@ set selectmode=key
 " 启动的时候不显示那个援助索马里儿童的提示
 set shortmess=atI
 
-" 自动启动 NERDTree
-"
-"快捷键设置
-map <C-S> :w<Enter>
-map <F10> :NERDTreeToggle /home/lfyzjck/www 
+" 设置ctags
+set tags=tags;
 
+"快捷键设置
+nnoremap <C-S> :w<Enter>
+vnoremap <C-C> "+y
+map <F10> :NERDTreeToggle .<CR>
+
+" Treat long lines as break lines (useful when moving around in them)
+map j gj
+map k gk
 
 "NeoComlCache配置
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_disable_auto_complete=1
+let g:neocomplcache_disable_auto_complete = 1
 
 " Plugin key-mappings. 
-"inoremap <expr><C-g>     neocomplcache#undo_completion() 
-"inoremap <expr><C-l>     neocomplcache#complete_common_string() 
+imap <C-k>     <Plug>(neocomplcache_snippets_expand) 
+smap <C-k>     <Plug>(neocomplcache_snippets_expand) 
+inoremap <expr><C-g>     neocomplcache#undo_completion() 
+inoremap <expr><C-l>     neocomplcache#complete_common_string() 
 " AutoComplPop like behavior. 
 "let g:neocomplcache_enable_auto_select = 1 
+" Enable omni completion. 
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS 
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags 
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS 
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete 
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags 
 
 "SuperTab
 "let g:SuperTabDefaultCompletionType = '<C-X><C-U>'
@@ -94,6 +120,17 @@ let g:NERDTreeShowBookmark=1
 " activate pathogen
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
-" autoload _vimrc
-autocmd! bufwritepost _vimrc source %
+" 在打开文件的时候检查
+let g:syntastic_check_on_open=1
+"phpcs，tab4个空格，编码参考使用CodeIgniter风格
+let g:syntastic_phpcs_conf = "--tab-width=4 --standard=CodeIgniter"
+
+if has('windows')
+    source $VIMRUNTIME/mswin.vim
+    behave mswin
+    " autoload _vimrc
+    autocmd! bufwritepost _vimrc source %
+else
+    " autoload .vimrc
+    autocmd! bufwritepost .vimrc source %
 
