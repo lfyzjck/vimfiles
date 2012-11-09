@@ -50,7 +50,14 @@ set incsearch
 "编码设置
 set enc=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
-set guifont=Inconsolata:h12:cANSI
+"set guifont=Bitstream\ Vera\ Sans\ Mono\ 13.
+if has("gui_running")
+  if has("gui_gtk2")
+    set guifont=Inconsolata\ 12
+  elseif has("gui_win32")
+    set guifont=Consolas:h11:cANSI
+  endif
+endif
 
 "语言设置
 set langmenu=zh_CN.UTF-8
@@ -133,4 +140,4 @@ if has('windows')
 else
     " autoload .vimrc
     autocmd! bufwritepost .vimrc source %
-
+endif
