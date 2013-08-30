@@ -1,6 +1,6 @@
 set number
 " 载入文件类型插件
-filetype on
+" filetype on
 filetype plugin on
 
 " 为特定文件类型载入相关缩进文件
@@ -34,7 +34,7 @@ set expandtab
 set showmatch
 
 "设置文件浏览器目录为当前目录
-set autochdir
+" set autochdir
 
 " 光标移动到buffer的顶部和底部时，保持3行距离
 set scrolloff=3
@@ -141,3 +141,15 @@ else
     " autoload .vimrc
     autocmd! bufwritepost .vimrc source %
 endif
+
+set nocompatible
+" filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+Bundle 'SuperTab'
+Bundle 'The-NERD-tree'
+Bundle 'https://github.com/mattn/emmet-vim.git'
