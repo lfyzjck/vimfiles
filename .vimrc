@@ -141,6 +141,7 @@ else
     " autoload .vimrc
     autocmd! bufwritepost .vimrc source %
 endif
+nnoremap <silent> <F9> :TagbarToggle<CR>
 
 set nocompatible
 " filetype off
@@ -153,3 +154,6 @@ Bundle 'gmarik/vundle'
 Bundle 'SuperTab'
 Bundle 'The-NERD-tree'
 Bundle 'https://github.com/mattn/emmet-vim.git'
+Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'Tagbar'
+Bundle 'TabBar'
