@@ -1,9 +1,0 @@
-[submodule "bundle/preview"]
-	path = bundle/preview
-	url = git://github.com/greyblake/vim-preview.git
-[submodule "vim-instant-markdown"]
-	path = vim-instant-markdown
-	url = git://github.com/suan/vim-instant-markdown.git
-[submodule "bundle/instant-markdown"]
-	path = bundle/instant-markdown
-	url = git://github.com/suan/vim-instant-markdown.git

@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/etc/maven'
-let g:netrw_dirhist_2='/var/log/vbox'
-let g:netrw_dirhist_3='/alidata/www/logs/aliyun.com/back-end-vm-report'
-let g:netrw_dirhist_4='/tmp/jna'
-let g:netrw_dirhist_5='/home/lfyzjck/www/iliwu/.git'
