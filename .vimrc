@@ -119,14 +119,17 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags 
 
 "SuperTab
-"let g:SuperTabDefaultCompletionType = '<C-X><C-U>'
+let g:SuperTabDefaultCompletionType = "<C-N>"
+
+" Powerline setup
+set laststatus=2
 
 "NERD Tree config
 let g:NERDTreeShowBookmark=1
 
-" activate pathogen
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+"Jedi-vim config
+let g:jedi#completions_command = "<C-Y>"
+
 " 在打开文件的时候检查
 let g:syntastic_check_on_open=1
 "phpcs，tab4个空格，编码参考使用CodeIgniter风格
@@ -157,3 +160,6 @@ Bundle 'https://github.com/mattn/emmet-vim.git'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'Tagbar'
 Bundle 'TabBar'
+Bundle 'davidhalter/jedi-vim'
+Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Bundle 'nvie/vim-flake8'
